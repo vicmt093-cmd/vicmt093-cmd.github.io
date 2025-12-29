@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pressure / Colour / State</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+  body {
+    margin: 0;
+    background: #0b0d12;
+    color: #f2f2f2;
+    font-family: system-ui, serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  #poem {
+    max-width: 760px;
+    padding: 2.5rem;
+    font-size: 1.25rem;
+    line-height: 1.65;
+    letter-spacing: 0.03em;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="poem"></div>
+
+<script>
+// ---------- FRAGMENTS (merged + executable) ----------
+
+const fragments = [
+
+  // earlier set
+  "because it went",
+  "it is given",
+  "a sign of the pressure",
+  "panic",
+  "to yourself",
+  "pressure or space",
+  "but with all",
+  "the doubling of themselves",
+  "between us",
+  "trails",
+  "light of space",
+  "in the page",
+  "the expression",
+  "a particular requirement",
+  "that the past",
+  "has become extinct",
+  "you yourself",
+  "are the effort",
+  "the partial one",
+  "double the problem",
+  "which divides",
+  "which has to leave",
+  "in the light",
+
+  // myArray12
+  "all the while",
+  "yet if these changes",
+  "untiring wrong situation",
+  "after recognising sorrow",
+  "which I value differently",
+  "other than partial worries",
+  "of the way, the degree, the hope",
+  "which is touched directly",
+  "misfortune often enters",
+
+  // myArray13
+  "if its wearing",
+  "internal power",
+  "supports in tension",
+  "the incomplete end",
+  "immateriality of reality",
+  "much is remaining",
+  "to experience",
+  "divided far",
+  "the colour of expectation",
+
+  // myArray14
+  "constant instantaneity",
+  "persevering",
+  "reality of your own",
+  "respect for",
+  "the cause of succeed",
+  "lies in these",
+  "eloquent descent",
+  "overestimate supports",
+  "in and of colour",
+
+  // myArray15
+  "voyage without goal",
+  "have a formless state",
+  "any situation",
+  "diminished diminishing affliction",
+  "diminishing tension and grief",
+  "after recognising sorrow",
+  "other than partial worries",
+  "untiring wrong situation",
+  "untiring conditions",
+
+  // myArray16
+  "in depth",
+  "but not complete",
+  "decide matters",
+  "negation and subjectivity",
+  "to detract from",
+  "to make something seem less good",
+  "opinion is divided",
+  "still the situation",
+  "the outcome shall be certain",
+
+  // myArray17
+  "when this",
+  "the cause of this support",
+  "in these odd circumstances",
+  "this sense the certainty",
+  "good judgements certainty",
+  "which shine in return",
+  "imitates subsequent motion",
+  "this colour",
+
+  // myArray18
+  "wearying into this interpretation opening",
+  "a wasteful meaning",
+  "this however persevering or whatever",
+  "because you adjust easily",
+  "which are carried",
+  "it is appraised",
+  "original agonized distance",
+  "from signified",
+  "it was carried away frequently",
+
+  // myArray19
+  "grief to value",
+  "that approval",
+  "with respect to the pressure",
+  "carries modification",
+  "falling to pressure",
+  "it changes difficult",
+  "in order to decrease difficulty",
+  "that of state and unknown cause",
+  "which is tired while suffering",
+
+  // myArray20
+  "state colour",
+  "state class",
+  "circumstance",
+  "imperfect",
+  "dissimilar",
+  "incomplete circumstance is identical",
+  "destroyed wearying unequal",
+  "unchangeable sameness",
+  "colour this colour"
+];
+
+// ---------- INPUT ----------
+const myName = prompt("Enter a word (verb, noun, anything):", "");
+
+// ---------- GENERATOR ----------
+function generatePoem(targetWords = 25) {
+  let output = [];
+  let wordCount = 0;
+
+  while (wordCount < targetWords) {
+    const insertName = Math.random() < 0.15 && myName.trim() !== "";
+    const phrase = insertName
+      ? myName
+      : fragments[Math.floor(Math.random() * fragments.length)];
+
+    output.push(phrase);
+    wordCount += phrase.split(" ").length;
+  }
+
+  return output.join(" ");
+}
+
+// ---------- DISPLAY ----------
+document.getElementById("poem").innerText = generatePoem(25);
+</script>
+
+</body>
+</html>
