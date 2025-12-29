@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pressure / Space</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+  body {
+    font-family: system-ui, serif;
+    background: #0e0e11;
+    color: #f4f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  #poem {
+    max-width: 720px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="poem"></div>
+
+<script>
+// --- YOUR PHRASES (cleaned + unified) ---
+
+const fragments = [
+  "because it went",
+  "it is given",
+  "a sign of the pressure",
+  "panic",
+  "to yourself",
+  "pressure or space",
+  "but with all",
+  "the doubling of themselves",
+  "between us",
+  "trails",
+  "light of space",
+  "in the page",
+  "the expression",
+  "a particular requirement",
+  "that the past",
+  "has become extinct",
+  "you yourself",
+  "are the effort",
+  "the partial one",
+  "double the problem",
+  "which divides",
+  "which has to leave",
+  "in the light"
+];
+
+// --- USER INPUT ---
+const myName = prompt("Enter a word (verb, noun, anything):", " ");
+
+// --- POEM GENERATOR ---
+function generatePoem(wordCount = 25) {
+  let poem = [];
+
+  for (let i = 0; i < wordCount; i++) {
+    const choice = Math.random();
+
+    if (choice < 0.15 && myName.trim() !== "") {
+      poem.push(myName);
+    } else {
+      const line = fragments[Math.floor(Math.random() * fragments.length)];
+      poem.push(line);
+    }
+  }
+
+  return poem.join(" ");
+}
+
+// --- DISPLAY ---
+document.getElementById("poem").innerText = generatePoem(25);
+</script>
+
+</body>
+</html>
