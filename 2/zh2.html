@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>Beautiful Chinese Poem Generator</title>
+<style>
+    body { font-family: "Microsoft YaHei", Arial, sans-serif; margin: 40px; background: #fff9f2; color: #333; }
+    h1 { color: #b35d5d; }
+    button { margin: 10px 0; padding: 10px 20px; font-size: 16px; background: #f1c27d; border: none; cursor: pointer; border-radius: 5px; }
+    button:hover { background: #f4b76d; }
+    #output { margin-top: 20px; font-size: 22px; line-height: 2; }
+    .line { display: block; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<h1>Beautiful Chinese Poem Generator</h1>
+<button onclick="generatePoem()">Generate Poem</button>
+<div id="output"></div>
+
+<script>
+// ------------------------
+// Word categories
+// ------------------------
+const subjects = ["我","你","他","她","孩子","我们","父母","朋友","男朋友","女朋友"];
+const times = ["今天","明天","昨天","早上","下午","晚上","刚刚","一会儿","现在"];
+const verbs = ["去","吃","看","学习","走","玩","买","读书","写字","坐车"];
+const objects = ["米饭","鸡肉","面条","衣服","书","桌子","椅子","电影","火车票","飞机票"];
+const places = ["家","学校","饭馆儿","公园","商店","北京大学","机场"];
+const comments = ["真的","最好","不一定","可能","马马虎虎","一定要","刚刚好","正好","非常"];
+
+// ------------------------
+// Helper to pick random
+// ------------------------
+function random(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// ------------------------
+// Generate poem
+// ------------------------
+function generatePoem() {
+    const lines = [];
+    const numLines = 4 + Math.floor(Math.random() * 3); // 4-6 lines
+    
+    for (let i = 0; i < numLines; i++) {
+        let template = Math.floor(Math.random() * 3); // 3 different templates
+        let sentence = "";
+        
+        switch(template) {
+            case 0:
+                // Subject + Time + Verb + Object + 在 + Place + Comment
+                sentence = `${random(subjects)}${random(times)}${random(verbs)}${random(objects)}在${random(places)}，${random(comments)}。`;
+                break;
+            case 1:
+                // Subject + Verb + Object + 之后 + Verb + Object
+                sentence = `${random(subjects)}${random(verbs)}${random(objects)}之后${random(verbs)}${random(objects)}。`;
+                break;
+            case 2:
+                // Time + Subject + Verb + Object + Comment
+                sentence = `${random(times)}${random(subjects)}${random(verbs)}${random(objects)}，${random(comments)}。`;
+                break;
+        }
+        lines.push(`<span class="line">${sentence}</span>`);
+    }
+    
+    document.getElementById('output').innerHTML = lines.join('');
+}
+</script>
+
+</body>
+</html>
