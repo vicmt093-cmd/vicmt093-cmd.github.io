@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>Dynamic Poem Generator</title>
+<style>
+  body {
+    font-family: "KaiTi", "SimHei", "STSong", serif;
+    background-color: #fdf6e3;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+  }
+  #poem {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    max-width: 600px;
+  }
+</style>
+</head>
+<body>
+<div id="poem"></div>
+
+<script>
+// Array of Chinese characters / words for the poem
+const FIELD = [
+  "春","夏","秋","冬","风","雨","雪","夜","晨","光",
+  "影","空","静","声","人","路","行","梦","思","心",
+  "情","爱","悲","欢","愁","望","回","花","鸟","云",
+  "晨光","夜色","山水","江河","月亮","星辰","落叶","浮云"
+];
+
+// Function to generate a line of the poem
+function generateLine(length = 5) {
+  let line = "";
+  for (let i = 0; i < length; i++) {
+    const index = Math.floor(Math.random() * FIELD.length);
+    line += FIELD[index];
+  }
+  return line;
+}
+
+// Function to generate a poem (4 lines)
+function generatePoem() {
+  let poem = "";
+  for (let i = 0; i < 4; i++) {
+    poem += generateLine(5) + "\n";
+  }
+  return poem;
+}
+
+// Display poem
+function displayPoem() {
+  const poemContainer = document.getElementById("poem");
+  poemContainer.textContent = generatePoem();
+}
+
+// Initial display
+displayPoem();
+
+// Refresh poem every 90 seconds
+setInterval(displayPoem, 90000);
+</script>
+</body>
+</html>
