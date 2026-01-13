@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>Chinese Poem/Sentence Generator</title>
+<style>
+    body { font-family: "Microsoft YaHei", Arial, sans-serif; margin: 40px; }
+    button { margin: 5px; padding: 10px 20px; font-size: 16px; }
+    #output { margin-top: 20px; font-size: 20px; color: #333; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<h1>Chinese Poem/Sentence Generator</h1>
+<button onclick="generateSentences()">Generate Poem</button>
+<div id="output"></div>
+
+<script>
+// ------------------------
+// Word categories
+// ------------------------
+const subjects = ["我","你","他","她","我们","孩子","父母","朋友","男朋友","女朋友","姐姐","弟弟","哥哥","妹妹"];
+const actions = ["去","吃","看","买","学习","走","玩","打电话","坐车","拿","练习","读书"];
+const objects = ["衣服","米饭","鸡肉","面条","火车票","飞机票","汉语","电影","书","桌子","椅子","学校","饭馆儿","商店","公园","北京大学","家"];
+const times = ["今天","明天","昨天","早上","下午","晚上","一会儿","刚刚","以后","现在"];
+const places = ["学校","家","饭馆儿","商店","公园","机场","火车站","北京大学","友谊商店"];
+const comments = ["真的","最好","不一定","可能","马马虎虎","一定要","刚刚好"];
+
+// ------------------------
+// Random selection
+// ------------------------
+function random(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// ------------------------
+// Generate sentences
+// ------------------------
+function generateSentences() {
+    let lines = [];
+    const numLines = 4 + Math.floor(Math.random() * 3); // 4-6 lines
+    for (let i = 0; i < numLines; i++) {
+        // Build a meaningful sentence
+        const subject = random(subjects);
+        const time = random(times);
+        const action = random(actions);
+        const object = random(objects);
+        const place = random(places);
+        const comment = random(comments);
+        
+        const sentence = `${subject}${time}${action}${object}在${place}，${comment}。`;
+        lines.push(sentence);
+    }
+    document.getElementById('output').innerHTML = lines.join('<br>');
+}
+</script>
+
+</body>
+</html>
