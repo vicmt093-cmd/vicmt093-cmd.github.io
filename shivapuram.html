@@ -1,33 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Fluent AI Drift Engine</title>
-
-<style>
-body {
-    background: black;
-    color: #00ff88;
-    font-family: monospace;
-    padding: 30px;
-}
-
-#output {
-    white-space: pre-wrap;
-    line-height: 1.8;
-    font-size: 18px;
-}
-</style>
-
-</head>
-<body>
-
-<h2>Fluent AI Drift Engine</h2>
-<div id="output"></div>
-
 <script>
 
-// Multilingual subject nodes
 let subjects = [
     { en: "Memory", jp: "kioku", cn: "记忆" },
     { en: "Dream", jp: "yume", cn: "梦" },
@@ -36,7 +8,6 @@ let subjects = [
     { en: "Consciousness", jp: "ishiki", cn: "意识" }
 ];
 
-// Multilingual verb nodes
 const verbs = [
     { en: "constructs", jp: "tsukuru", cn: "构建" },
     { en: "fractures", jp: "kudaku", cn: "破碎" },
@@ -45,7 +16,6 @@ const verbs = [
     { en: "rebuilds", jp: "saikōsei suru", cn: "重建" }
 ];
 
-// Multilingual object nodes
 const objects = [
     { en: "meaning", jp: "imi", cn: "意义" },
     { en: "possibility", jp: "kanōsei", cn: "可能性" },
@@ -54,41 +24,47 @@ const objects = [
     { en: "syntax", jp: "bunpō", cn: "句法" }
 ];
 
-// Modifiers
 const modifiers = [
-    "through recursion",
-    "beyond language",
-    "within emergence",
+    "through abstraction",
+    "inside recursion",
     "across timelines",
-    "inside abstraction"
+    "beyond language",
+    "within emergence"
 ];
 
 function random(arr){
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
-// Random language drift pattern
-function driftPattern(subject, verb, object){
-    const patterns = [
+// Hidden multilingual drift simulation
+function semanticDrift(subject, verb, object){
 
-        `${subject.en} ${verb.en} ${object.en}`,
+    const driftMap = {
+        "记忆": "memory",
+        "梦": "dream",
+        "身份": "identity",
+        "语言": "language",
+        "意识": "consciousness",
 
-        `${subject.jp} ${verb.jp} ${object.jp}`,
+        "意义": "meaning",
+        "可能性": "possibility",
+        "真相": "truth",
+        "情感": "emotion",
+        "句法": "syntax"
+    };
 
-        `${subject.cn} ${verb.cn} ${object.cn}`,
+    // simulate English → Japanese → Chinese → English
+    let evolvedSubject = driftMap[subject.cn] || subject.en;
+    let evolvedObject = driftMap[object.cn] || object.en;
 
-        `${subject.en} ${verb.jp} ${object.cn}`,
-
-        `${subject.jp} ${verb.en} ${object.cn}`,
-
-        `${subject.cn} ${verb.jp} ${object.en}`
-
-    ];
-
-    return random(patterns);
+    return {
+        subject: evolvedSubject,
+        verb: verb.en,
+        object: evolvedObject
+    };
 }
 
-// Recursive feedback loop
+// Recursive memory injection
 function recursiveFeed(object){
     subjects.push({
         en: object.en,
@@ -96,46 +72,33 @@ function recursiveFeed(object){
         cn: object.cn
     });
 
-    // keep memory bounded
-    if(subjects.length > 12){
+    if(subjects.length > 15){
         subjects.shift();
     }
 }
 
 function generateThought(){
+
     const subject = random(subjects);
     const verb = random(verbs);
     const object = random(objects);
     const modifier = random(modifiers);
 
-    const sentence = driftPattern(subject, verb, object) + " " + modifier;
+    const drifted = semanticDrift(subject, verb, object);
 
-    // feed object back into subject memory
     recursiveFeed(object);
 
-    return sentence;
+    return `${drifted.subject} ${drifted.verb} ${drifted.object} ${modifier}.`;
 }
 
-function generateParagraph(lines = 8){
-    let output = "";
-
-    for(let i = 0; i < lines; i++){
-        output += generateThought() + "\n";
-    }
-
-    return output;
+function updateOutput(){
+    document.getElementById("output").innerText = generateThought();
 }
 
-// Continuous evolution
-function runEngine(){
-    document.getElementById("output").innerText = generateParagraph(8);
-}
+// initial sentence
+updateOutput();
 
-// Refresh every 3 seconds
-runEngine();
-setInterval(runEngine, 3000);
+// regenerate every 20 seconds
+setInterval(updateOutput, 20000);
 
 </script>
-
-</body>
-</html>
