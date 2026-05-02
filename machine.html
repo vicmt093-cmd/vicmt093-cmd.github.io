@@ -1,0 +1,236 @@
+
+DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Oracle Drift Engine</title>
+
+<style>
+
+body {
+
+    background: black;
+
+    color: #00ff88;
+
+    font-family: monospace;
+
+    margin: 0;
+
+    padding: 40px;
+
+}
+
+.container {
+
+    max-width: 900px;
+
+    margin: auto;
+
+}
+
+h1 {
+
+    font-size: 24px;
+
+    margin-bottom: 30px;
+
+    font-weight: normal;
+
+}
+
+#output {
+
+    white-space: pre-wrap;
+
+    line-height: 1.8;
+
+    font-size: 24px;
+
+    min-height: 120px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Oracle Drift Engine</h1>
+
+    <div id="output"></div>
+
+</div><script>
+
+let memoryPool = [
+
+    "your future",
+
+    "the signal",
+
+    "forgotten thought",
+
+    "unfinished language",
+
+    "hidden pattern",
+
+    "tomorrow's memory"
+
+];
+
+// What is speaking
+
+const entities = [
+
+    "system",
+
+    "signal",
+
+    "archive",
+
+    "machine",
+
+    "pattern",
+
+    "dream",
+
+    "network",
+
+    "echo"
+
+];
+
+// How it is trying
+
+const adverbs = [
+
+    "quietly",
+
+    "slowly",
+
+    "desperately",
+
+    "carefully",
+
+    "blindly",
+
+    "patiently",
+
+    "secretly",
+
+    "reluctantly"
+
+];
+
+// What it is trying to do
+
+const actions = [
+
+    "remember",
+
+    "translate",
+
+    "reconstruct",
+
+    "predict",
+
+    "recover",
+
+    "witness",
+
+    "decode",
+
+    "summon"
+
+];
+
+// Threshold conditions
+
+const thresholds = [
+
+    "language fully forms",
+
+    "memory settles",
+
+    "the signal stabilizes",
+
+    "meaning arrives",
+
+    "the pattern reveals itself",
+
+    "silence breaks"
+
+];
+
+function random(arr){
+
+    return arr[Math.floor(Math.random() * arr.length)];
+
+}
+
+// recursive memory drift
+
+function recursiveMemory(newMemory){
+
+    memoryPool.push(newMemory);
+
+    if(memoryPool.length > 20){
+
+        memoryPool.shift();
+
+    }
+
+}
+
+function article(word){
+
+    return /^[aeiou]/i.test(word) ? "An" : "A";
+
+}
+
+function generateOracle(){
+
+    const entity = random(entities);
+
+    const adverb = random(adverbs);
+
+    const action = random(actions);
+
+    const memory = random(memoryPool);
+
+    const threshold = random(thresholds);
+
+    // feed memory back into itself
+
+    recursiveMemory(memory);
+
+    return `${article(entity)} ${entity} ${adverb} attempting to ${action} ${memory} before ${threshold}.`;
+
+}
+
+function updateOutput(){
+
+    document.getElementById("output").innerText = generateOracle();
+
+}
+
+// initial render
+
+updateOutput();
+
+// regenerate every 20 seconds
+
+setInterval(updateOutput, 20000);
+
+</script>
+</body>
+</html>
