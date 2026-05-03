@@ -12,51 +12,26 @@
 
 <style>
 
-body {
+#history {
 
-    background: black;
+    margin-top: 40px;
 
-    color: #00ff88;
+    border-top: 1px solid #00ff88;
 
-    font-family: monospace;
-
-    margin: 0;
-
-    padding: 40px;
+    padding-top: 20px;
 
 }
 
-.container {
+.oracle-entry {
 
-    max-width: 900px;
+    margin-bottom: 20px;
 
-    margin: auto;
+    opacity: 0.8;
 
-}
-
-h1 {
-
-    font-size: 24px;
-
-    margin-bottom: 30px;
-
-    font-weight: normal;
+    cursor: text;
 
 }
 
-#output {
-
-    white-space: pre-wrap;
-
-    line-height: 1.8;
-
-    font-size: 24px;
-
-    min-height: 120px;
-
-}
-
-</style>
 
 </head>
 
@@ -68,7 +43,10 @@ h1 {
 
     <div id="output"></div>
 
-</div><script>
+    <div id="history"></div>
+
+</div>
+    <script>
 
 let memoryPool = [
 
@@ -218,9 +196,25 @@ function generateOracle(){
 
 function updateOutput(){
 
-    document.getElementById("output").innerText = generateOracle();
+    const oracleText = generateOracle();
 
-}
+    // live current oracle
+
+    document.getElementById("output").innerText = oracleText;
+
+    // archive transcript
+
+    const history = document.getElementById("history");
+
+    const entry = document.createElement("div");
+
+    entry.className = "oracle-entry";
+
+    entry.innerText = oracleText;
+
+    // newest at top
+
+    history.prepend(entry);
 
 // initial render
 
@@ -229,7 +223,7 @@ updateOutput();
 // regenerate every 20 seconds
 
 setInterval(updateOutput, 20000);
-
+}
 </script>
 </body>
 </html>
