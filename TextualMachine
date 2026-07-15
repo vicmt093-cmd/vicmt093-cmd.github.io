@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TextualMachine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>TextualMachine</h1>
+    <p>
+        A generative writing engine built from fragments and imagination.
+    </p>
+</header>
+
+
+<main>
+
+<section id="generator">
+
+<h2>Create</h2>
+
+<input 
+id="wordInput"
+placeholder="Enter a word..."
+>
+
+<select id="theme">
+<option>Dream</option>
+<option>Memory</option>
+<option>Change</option>
+<option>Identity</option>
+</select>
+
+<button id="generate">
+Generate
+</button>
+
+
+<div id="output">
+Your text will appear here...
+</div>
+
+</section>
+
+
+<section id="machine">
+
+<h2>The Machine</h2>
+
+<p>
+Word → Phrase → Pattern → Randomness → Text
+</p>
+
+</section>
+
+
+<section id="about">
+
+<h2>About</h2>
+
+<p>
+A modern reconstruction of an early JavaScript poetry experiment.
+</p>
+
+</section>
+
+
+</main>
+
+
+<footer>
+<a href="https://github.com/">View Source</a>
+</footer>
+
+
+<script src="phrases.js"></script>
+<script src="templates.js"></script>
+<script src="script.js"></script>
+
+</body>
+
+</html>
