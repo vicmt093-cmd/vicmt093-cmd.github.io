@@ -3539,16 +3539,32 @@ var randomNo6	= (Math.floor(Math.random() * 11) + 1);
     </posts>
 </tumblr>
 </SCRIPT>
+<div id="disqus_thread"></div>
 
-<script type="text/javascript" src="http://into-my.tumblr.com/api/read/json"></script>
+<script>
+var disqus_config = function () {
+    this.page.url = "https://vicmt093-cmd.github.io/intoit.html";
+    this.page.identifier = "textualmachine-intoit";
+};
 
-<script type="text/javascript">
-    // The variable "tumblr_api_read" is now set.
-    document.write(
-        '<a href="' + tumblr_api_read[2][0]['@url'] + 
-        '">Most recent Tumblr post</a>'
-    );
-</script></P>
+(function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = 'https://textualmachine.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+
+    (d.head || d.body).appendChild(s);
+
+})();
+</script>
+
+<noscript>
+Please enable JavaScript to view the comments powered by Disqus.
+</noscript>
+
+<script id="dsq-count-scr" src="//textualmachine.disqus.com/count.js" async></script>
+</P>
 			</TD>
 		</TR>
 	</TABLE></B></FONT><script type="text/javascript">
