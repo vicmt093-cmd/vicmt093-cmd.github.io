@@ -211,99 +211,12 @@ function displayTraversal() {
   document.getElementById("para2").innerHTML = output;
 }
 
-</script><div class="guestbook">
-    <h2>Guestbook</h2>
-
-    <form action="submit.php" method="post" onsubmit="return validateGuestbook(this);">
-
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name">
-
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email">
-
-        <label for="message">Message</label>
-        <textarea name="message" id="message"></textarea>
-
-        <button type="submit">Sign Guestbook</button>
-
-    </form>
-</div><style>
-.guestbook {
-    max-width: 450px;
-    padding: 20px;
-    margin: 30px auto;
-    border: 1px solid #ccc;
-    background: #fff;
-}
-
-.guestbook label {
-    display: block;
-    margin-top: 12px;
-}
-
-.guestbook input,
-.guestbook textarea {
-    width: 100%;
-    padding: 8px;
-}
-
-.guestbook textarea {
-    height: 120px;
-}
-
-.guestbook button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-</style>
+</script>
 </head>
 
 <body onload="displayTraversal(); setInterval(displayTraversal, 30000);">
 
 <p id="para2"><script>
-function validateGuestbook(form) {
 
-    var name = form.name.value.trim();
-    var email = form.email.value.trim();
-    var message = form.message.value.trim();
-
-    if (name === "") {
-        alert("Please enter your name.");
-        form.name.focus();
-        return false;
-    }
-
-    if (email === "") {
-        alert("Please enter your email.");
-        form.email.focus();
-        return false;
-    }
-
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailPattern.test(email)) {
-        alert("Please enter a valid email address.");
-        form.email.focus();
-        return false;
-    }
-
-    if (message === "") {
-        alert("Please enter a message.");
-        form.message.focus();
-        return false;
-    }
-
-    return true;
-}
-</script><section id="guestbook">
-    <h2>Guestbook</h2>
-    <div id="entries">
-        Loading entries...
-    </div>
-</section>
-
-<script src="guestbook.js"></script>
 </body>
 </html>
